@@ -1,0 +1,131 @@
+@import "tailwindcss";
+
+@theme {
+  --color-electric-blue: #075BFF;
+  --color-vibrant-aqua: #00BDB5;
+  --color-energetic-coral: #FF795B;
+  --color-fresh-lime: #D7F34A;
+  --color-sky-blue: #E2F1FF;
+  --color-soft-mint: #E5F5EE;
+  --color-warm-ivory: #FFF8ED;
+  --color-pure-white: #FFFFFF;
+  --color-deep-slate: #30414B;
+
+  --font-display: "Barlow", system-ui, -apple-system, sans-serif;
+  --font-sans: "Inter", system-ui, -apple-system, sans-serif;
+}
+
+@layer base {
+  html {
+    font-family: var(--font-sans);
+    color: #30414B;
+    background-color: #FFF8ED;
+    scroll-behavior: smooth;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  body {
+    margin: 0;
+    overflow-x: hidden;
+    background-color: #FFF8ED;
+    color: #30414B;
+  }
+
+  h1, h2, h3, h4, .font-display {
+    font-family: var(--font-display);
+    text-wrap: balance;
+  }
+
+  /* Strict zero-radius discipline across interactive and structural primitives */
+  *, *::before, *::after {
+    border-radius: 0px;
+  }
+
+  a:focus-visible,
+  button:focus-visible,
+  input:focus-visible,
+  select:focus-visible,
+  textarea:focus-visible {
+    outline: 2px solid #075BFF;
+    outline-offset: 3px;
+  }
+}
+
+/* Borderless transparent CTA with animated bottom hairline */
+.cta-borderless {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
+  background: transparent;
+  border: none;
+  outline: none;
+  border-radius: 0;
+  padding: 0.625rem 0;
+  font-family: var(--font-sans);
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-decoration: none;
+  cursor: pointer;
+  white-space: nowrap;
+  flex-shrink: 0;
+  transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.2s ease;
+}
+
+.cta-borderless::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: 2px;
+  background-color: currentColor;
+  transform-origin: left center;
+  transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.cta-borderless:hover::after {
+  transform: scaleX(1.06);
+}
+
+.cta-borderless .cta-arrow {
+  display: inline-block;
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.cta-borderless:hover .cta-arrow {
+  transform: translateX(6px);
+}
+
+/* Flowing hydraulic gradient drift for editorial accents */
+@keyframes flowDrift {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+.flow-motion-band {
+  background-size: 200% 200%;
+  animation: flowDrift 16s ease-in-out infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  .flow-motion-band {
+    animation: none;
+  }
+  .cta-borderless,
+  .cta-borderless::after,
+  .cta-borderless .cta-arrow {
+    transition: none;
+  }
+}

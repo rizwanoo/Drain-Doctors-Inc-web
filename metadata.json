@@ -1,0 +1,6 @@
+{
+  "name": "Drain Doctors Inc. — SoCal Plumbing & Drain Experts",
+  "description": "Official four-page website for Drain Doctors Inc. (CA License #1112197), Southern California drain cleaning, hydro jetting, rooter, and sewer specialists.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
